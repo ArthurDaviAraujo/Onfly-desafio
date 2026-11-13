@@ -1,5 +1,22 @@
 # Onfly — Consolidador de reservas de hotel
 
+[![CI](https://github.com/ArthurDaviAraujo/onfly-desafio/actions/workflows/ci.yml/badge.svg)](https://github.com/ArthurDaviAraujo/onfly-desafio/actions/workflows/ci.yml)
+
+| Arquivo principal | Antes | Depois |
+|-|-|-|
+| Testes | 5 fornecidos falhando | **63 passando** |
+| Reservas lidas | 200 de 300 | **300** |
+| Noites de quarto | −1393 | **1347** |
+| Total em BRL | 193218.53 | **396170.00** |
+
+> **Entrega:** veja [`entrega/README-ENTREGA.md`](entrega/README-ENTREGA.md) — defeitos corrigidos, causa raiz,
+> investigação, como validar e resultado do `pytest`. Leitura complementar:
+> [`entrega/relatorio-tecnico.pdf`](entrega/relatorio-tecnico.pdf). O enunciado original segue abaixo, sem alterações.
+
+**Tutorial em GIF:**
+
+![Como rodar o projeto](entrega/gifs/4-como-rodar.gif)
+
 Você recebeu a exportação de reservas de hotel de uma empresa cliente da Onfly. O CLI deste projeto deveria gerar um relatório JSON consolidado, mas **entrega números errados**.
 
 **Sua tarefa:** encontrar e corrigir os defeitos do CLI, fazer os testes fornecidos passarem e
