@@ -32,7 +32,8 @@ PYTHONPATH=src python -m onfly\_report \\
   --rates data/taxas\_cambio.csv \\
   --output output/report.json
 ```
-**Tuturial gráfico:**
+**Tuturial:**
+
 ![Como rodar o projeto](entrega/gifs/4-como-rodar.gif)
 
 O relatório é gravado em `output/report.json`; o CLI cria o diretório. Um resumo é impresso no
