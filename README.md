@@ -13,16 +13,16 @@
 > investigação, como validar e resultado do `pytest`. Leitura complementar:
 > [`entrega/relatorio-tecnico.pdf`](entrega/relatorio-tecnico.pdf). O enunciado original segue abaixo, sem alterações.
 
-**Tutorial em GIF:**
-
-![Como rodar o projeto](entrega/gifs/4-como-rodar.gif)
-
 Você recebeu a exportação de reservas de hotel de uma empresa cliente da Onfly. O CLI deste projeto deveria gerar um relatório JSON consolidado, mas **entrega números errados**.
 
 **Sua tarefa:** encontrar e corrigir os defeitos do CLI, fazer os testes fornecidos passarem e
 entregar o projeto.
 
 ## Como rodar
+
+**Tuturial em GIF**
+![Como rodar o projeto](entrega/gifs/4-como-rodar.gif)
+
 
 Requisitos: Python 3.11+ e pytest para os testes (`requirements-dev.txt`).
 
