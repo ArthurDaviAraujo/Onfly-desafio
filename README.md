@@ -20,10 +20,6 @@ entregar o projeto.
 
 ## Como rodar
 
-**Tuturial em GIF**
-![Como rodar o projeto](entrega/gifs/4-como-rodar.gif)
-
-
 Requisitos: Python 3.11+ e pytest para os testes (`requirements-dev.txt`).
 
 ```bash
@@ -36,6 +32,8 @@ PYTHONPATH=src python -m onfly\_report \\
   --rates data/taxas\_cambio.csv \\
   --output output/report.json
 ```
+**Tuturial gráfico:**
+![Como rodar o projeto](entrega/gifs/4-como-rodar.gif)
 
 O relatório é gravado em `output/report.json`; o CLI cria o diretório. Um resumo é impresso no
 stdout.
