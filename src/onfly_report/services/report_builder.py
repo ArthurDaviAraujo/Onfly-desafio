@@ -37,6 +37,14 @@ class ReportBuilder:
         self._top_n = top_n
         self._now = now
 
+    def _generated_at(self) -> datetime:
+        """Horário do relatório sempre no offset fixo -03:00, inclusive quando injetado."""
+        if self._now is None:
+            return datetime.now(FIXED_OFFSET)
+        if self._now.tzinfo is None:
+            return self._now.replace(tzinfo=FIXED_OFFSET)
+        return self._now.astimezone(FIXED_OFFSET)
+
     def build(self) -> dict:
         parser = RowParser()
         reservations = [parser.parse(raw) for raw in self._reservation_repository.read()]
@@ -48,12 +56,8 @@ class ReportBuilder:
 
         confirmed = [row for row in reservations if is_billable(row.status)]
 
-        monthly: dict[str, dict] = defaultdict(
-            lambda: {"reservations": 0, "room_nights": 0, "amount": Decimal("0")}
-        )
-        hotels: dict[str, dict] = defaultdict(
-            lambda: {"hotel_name": "", "room_nights": 0, "amount": Decimal("0")}
-        )
+        monthly: dict[str, dict] = defaultdict(lambda: {"reservations": 0, "room_nights": 0, "amount": Decimal("0")})
+        hotels: dict[str, dict] = defaultdict(lambda: {"hotel_name": "", "room_nights": 0, "amount": Decimal("0")})
 
         total_nights = 0
         total_amount = Decimal("0")
@@ -74,9 +78,7 @@ class ReportBuilder:
             hotels[row.hotel_id]["room_nights"] += room_nights
             hotels[row.hotel_id]["amount"] += amount_brl
 
-        average_nightly_rate = (
-            total_amount / Decimal(total_nights) if total_nights > 0 else Decimal("0")
-        )
+        average_nightly_rate = total_amount / Decimal(total_nights) if total_nights > 0 else Decimal("0")
 
         by_month = [
             {
@@ -100,7 +102,7 @@ class ReportBuilder:
             for hotel_id, data in ranked_hotels[: self._top_n]
         ]
 
-        now = self._now or datetime.now(FIXED_OFFSET)
+        now = self._generated_at()
 
         return {
             "report_version": "1.0",

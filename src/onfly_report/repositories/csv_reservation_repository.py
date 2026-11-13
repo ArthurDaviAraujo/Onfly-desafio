@@ -35,7 +35,8 @@ class CsvReservationRepository:
 
     def read(self) -> list[RawRow]:
         try:
-            with self._path.open("r", encoding="utf-8", newline="") as handle:
+            # utf-8-sig aceita arquivos com ou sem BOM (exportações de planilha costumam incluir).
+            with self._path.open("r", encoding="utf-8-sig", newline="") as handle:
                 reader = csv.DictReader(handle)
                 missing = [column for column in REQUIRED_COLUMNS if column not in (reader.fieldnames or [])]
                 if missing:
